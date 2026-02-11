@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1 Month of Us</title>
+<link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Patrick Hand', cursive;
+    background: linear-gradient(to bottom, #fff0f6, #ffe6f0);
+    color: #5a3e4d;
+}
+
+header {
+    text-align: center;
+    padding: 40px 20px 20px;
+}
+
+header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    margin: 0;
+}
+
+.timeline {
+    position: relative;
+    max-width: 700px;
+    margin: auto;
+    padding: 20px;
+}
+
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 4px;
+    background-color: #ffb6c1;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -2px;
+}
+
+.container {
+    padding: 20px 30px;
+    position: relative;
+    background: inherit;
+    width: 50%;
+}
+
+.container::after {
+    content: '❤';
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    right: -13px;
+    background-color: #ffb6c1;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 25px;
+    color: white;
+    font-size: 14px;
+    top: 30px;
+}
+
+.left {
+    left: 0;
+}
+
+.right {
+    left: 50%;
+}
+
+.right::after {
+    left: -13px;
+}
+
+.content {
+    padding: 15px;
+    background-color: white;
+    position: relative;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.content img {
+    width: 100%;
+    border-radius: 15px;
+    margin-bottom: 10px;
+}
+
+.date {
+    font-size: 0.9rem;
+    color: #a06a82;
+}
+
+.title {
+    font-size: 1.3rem;
+    margin: 5px 0;
+}
+
+.caption {
+    font-size: 1rem;
+    margin-top: 5px;
+}
+
+/* Mobile */
+@media screen and (max-width: 768px) {
+    .timeline::after {
+        left: 20px;
+    }
+
+    .container {
+        width: 100%;
+        padding-left: 60px;
+        padding-right: 25px;
+    }
+
+    .container::after {
+        left: 15px;
+    }
+
+    .right {
+        left: 0%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>1 Month of Us</h1>
+</header>
+
+<div class="timeline">
+
+    <div class="container left">
+        <div class="content">
+            <img src="IMG_3080.jpeg">
+            <div class="date">January 15, 2026</div>
+            <div class="title">Our Beginning</div>
+            <div class="caption">The start of something so so special 💕</div>
+        </div>
+    </div>
+
+    <div class="container right">
+        <div class="content">
+            <img src="IMG_3019.jpeg">
+            <div class="date">January 20, 2026</div>
+            <div class="title">Cherry Amber Date</div>
+            <div class="caption">Our very first date! 🍒</div>
+        </div>
+    </div>
+
+    <div class="container left">
+        <div class="content">
+            <img src="IMG_3018.jpeg">
+            <div class="date">January 23, 2026</div>
+            <div class="title">Thai Food Date</div>
+            <div class="caption">Two dates in three days… can't get enough! 🌶️✨</div>
+        </div>
+    </div>
+
+    <div class="container right">
+        <div class="content">
+            <img src="IMG_3007.jpeg">
+            <div class="date">January 31, 2026</div>
+            <div class="title">First Official Party Together!</div>
+            <div class="caption">Our first big night out as us 🥂💫</div>
+        </div>
+    </div>
+
+    <div class="container left">
+        <div class="content">
+            <img src="IMG_3045.jpeg">
+            <div class="date">February 6, 2026</div>
+            <div class="title">Din Tai Fung (DTF?!)</div>
+            <div class="caption">First Birthday Celebration! 🎂❤️</div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
