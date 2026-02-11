@@ -14,7 +14,7 @@ body {
     color: #5a3e4d;
 }
 
-/* PASSWORD SCREEN */
+/* PASSWORD */
 #passwordScreen {
     position: fixed;
     width: 100%;
@@ -32,7 +32,6 @@ body {
     border-radius: 25px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.1);
     text-align: center;
-    max-width: 400px;
 }
 
 .option {
@@ -41,7 +40,6 @@ body {
     border-radius: 15px;
     background: #ffe6f0;
     cursor: pointer;
-    transition: 0.3s;
 }
 .option:hover { background: #ffccd9; }
 
@@ -58,82 +56,79 @@ header h1 {
 /* TIMELINE */
 .timeline {
     position: relative;
-    max-width: 1000px;
-    margin: auto;
-    padding: 40px 0;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px 0;
 }
 
 /* CENTER LINE */
-.timeline::before {
+.timeline::after {
     content: '';
     position: absolute;
-    left: 50%;
-    top: 0;
-    bottom: 0;
     width: 4px;
     background: #ffb6c1;
-    transform: translateX(-50%);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -2px;
 }
 
-/* TIMELINE ITEM */
-.timeline-item {
+/* CONTAINER */
+.container {
+    padding: 20px 40px;
     position: relative;
+    background: inherit;
     width: 50%;
-    padding: 30px 40px;
-    box-sizing: border-box;
 }
 
-.timeline-item.left {
+.container.left {
     left: 0;
-    text-align: right;
 }
 
-.timeline-item.right {
+.container.right {
     left: 50%;
 }
 
-/* HEART MARKER */
-.timeline-item::after {
+/* HEART DOT */
+.container::after {
     content: "❤";
     position: absolute;
-    top: 40px;
-    right: -13px;
     width: 26px;
     height: 26px;
+    right: -13px;
     background: #ffb6c1;
     color: white;
     border-radius: 50%;
     text-align: center;
     line-height: 26px;
+    top: 30px;
 }
 
-.timeline-item.right::after {
+.container.right::after {
     left: -13px;
 }
 
 /* SCRAPBOOK CARD */
-.card {
+.content {
     background: white;
     padding: 15px;
-    border-radius: 12px;
-    box-shadow: 0 12px 25px rgba(0,0,0,0.1);
-    display: inline-block;
-    max-width: 350px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    transform: rotate(-2deg);
     cursor: pointer;
     transition: 0.3s;
-    transform: rotate(-2deg);
 }
 
-.timeline-item.right .card {
+.container.right .content {
     transform: rotate(2deg);
 }
 
-.card:hover {
-    transform: scale(1.05);
+.content:hover {
+    transform: scale(1.04);
 }
 
 /* POLAROID IMAGE */
-.card img {
+.content img {
     width: 100%;
     background: white;
     padding: 8px 8px 30px 8px;
@@ -146,15 +141,14 @@ header h1 {
 
 /* MOBILE */
 @media screen and (max-width: 768px) {
-    .timeline::before { left: 20px; }
-    .timeline-item {
+    .timeline::after { left: 20px; }
+    .container {
         width: 100%;
         padding-left: 70px;
         padding-right: 20px;
     }
-    .timeline-item.right { left: 0; }
-    .timeline-item::after { left: 7px; }
-    .timeline-item.left { text-align: left; }
+    .container.right { left: 0%; }
+    .container::after { left: 7px; }
 }
 
 /* MODAL */
@@ -212,8 +206,8 @@ header h1 {
 
 <div class="timeline">
 
-<div class="timeline-item left">
-<div class="card" onclick="openModal('m1')">
+<div class="container left">
+<div class="content" onclick="openModal('m1')">
 <img src="IMG_3080.jpeg">
 <div class="date">January 15, 2026</div>
 <div class="title">Our Beginning</div>
@@ -221,8 +215,8 @@ header h1 {
 </div>
 </div>
 
-<div class="timeline-item right">
-<div class="card" onclick="openModal('m2')">
+<div class="container right">
+<div class="content" onclick="openModal('m2')">
 <img src="IMG_3019.jpeg">
 <div class="date">January 23, 2026</div>
 <div class="title">Cherry Amber Date</div>
@@ -230,8 +224,8 @@ header h1 {
 </div>
 </div>
 
-<div class="timeline-item left">
-<div class="card" onclick="openModal('m3')">
+<div class="container left">
+<div class="content" onclick="openModal('m3')">
 <img src="IMG_3018.jpeg">
 <div class="date">January 23, 2026</div>
 <div class="title">Thai Food Date</div>
@@ -239,8 +233,8 @@ header h1 {
 </div>
 </div>
 
-<div class="timeline-item right">
-<div class="card" onclick="openModal('m4')">
+<div class="container right">
+<div class="content" onclick="openModal('m4')">
 <img src="IMG_3007.jpeg">
 <div class="date">January 31, 2026</div>
 <div class="title">First Official Party Together!</div>
@@ -248,8 +242,8 @@ header h1 {
 </div>
 </div>
 
-<div class="timeline-item left">
-<div class="card" onclick="openModal('m5')">
+<div class="container left">
+<div class="content" onclick="openModal('m5')">
 <img src="IMG_3045.jpeg">
 <div class="date">February 6, 2026</div>
 <div class="title">Din Tai Fung (DTF?!)</div>
@@ -259,7 +253,7 @@ header h1 {
 
 </div>
 
-<!-- MODALS -->
+<!-- MODALS (unchanged) -->
 <div id="m1" class="modal"><div class="modal-content"><div class="close" onclick="closeModal('m1')">✕</div><h2>Our Beginning</h2><img src="IMG_3080.jpeg"></div></div>
 <div id="m2" class="modal"><div class="modal-content"><div class="close" onclick="closeModal('m2')">✕</div><h2>Cherry Amber Date</h2><img src="IMG_3019.jpeg"></div></div>
 <div id="m3" class="modal"><div class="modal-content"><div class="close" onclick="closeModal('m3')">✕</div><h2>Thai Food Date</h2><img src="IMG_3018.jpeg"></div></div>
