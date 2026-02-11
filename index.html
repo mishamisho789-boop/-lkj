@@ -10,85 +10,92 @@
 body {
     margin: 0;
     font-family: 'Patrick Hand', cursive;
-    background: linear-gradient(to bottom, #fff0f6, #ffe6f0);
+    background: #fff6f9;
     color: #5a3e4d;
+    overflow-x: hidden;
 }
 
+/* PASSWORD SCREEN */
+#passwordScreen {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(#ffe6f0, #fff);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 999;
+    padding: 20px;
+}
+
+.password-box {
+    background: white;
+    padding: 30px;
+    border-radius: 25px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    max-width: 400px;
+}
+
+.password-box h2 {
+    margin-top: 0;
+}
+
+.option {
+    display: block;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 15px;
+    background: #ffe6f0;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.option:hover {
+    background: #ffccd9;
+}
+
+/* HEADER */
 header {
     text-align: center;
-    padding: 40px 20px 20px;
+    padding: 40px 20px 10px;
 }
 
 header h1 {
     font-family: 'Playfair Display', serif;
     font-size: 2.5rem;
-    margin: 0;
 }
 
+/* TIMELINE */
 .timeline {
-    position: relative;
     max-width: 700px;
     margin: auto;
     padding: 20px;
 }
 
-.timeline::after {
-    content: '';
-    position: absolute;
-    width: 4px;
-    background-color: #ffb6c1;
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    margin-left: -2px;
-}
-
-.container {
-    padding: 20px 30px;
-    position: relative;
-    background: inherit;
-    width: 50%;
-}
-
-.container::after {
-    content: '❤';
-    position: absolute;
-    width: 25px;
-    height: 25px;
-    right: -13px;
-    background-color: #ffb6c1;
-    border-radius: 50%;
-    text-align: center;
-    line-height: 25px;
-    color: white;
-    font-size: 14px;
-    top: 30px;
-}
-
-.left {
-    left: 0;
-}
-
-.right {
-    left: 50%;
-}
-
-.right::after {
-    left: -13px;
-}
-
-.content {
+.card {
+    background: white;
     padding: 15px;
-    background-color: white;
-    position: relative;
+    margin: 30px 0;
     border-radius: 20px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+    transform: rotate(-1deg);
+    transition: 0.3s;
+    cursor: pointer;
+    position: relative;
 }
 
-.content img {
+.card:nth-child(even) {
+    transform: rotate(1deg);
+}
+
+.card:hover {
+    transform: scale(1.02);
+}
+
+.card img {
     width: 100%;
     border-radius: 15px;
-    margin-bottom: 10px;
 }
 
 .date {
@@ -98,38 +105,80 @@ header h1 {
 
 .title {
     font-size: 1.3rem;
-    margin: 5px 0;
 }
 
 .caption {
-    font-size: 1rem;
     margin-top: 5px;
 }
 
-/* Mobile */
-@media screen and (max-width: 768px) {
-    .timeline::after {
-        left: 20px;
-    }
+/* TAPE EFFECT */
+.card::before {
+    content: "";
+    width: 60px;
+    height: 20px;
+    background: #fff0f6;
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-3deg);
+    opacity: 0.7;
+}
 
-    .container {
-        width: 100%;
-        padding-left: 60px;
-        padding-right: 25px;
-    }
+/* MODAL MEMORY PAGE */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 998;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    background: rgba(0,0,0,0.6);
+    padding: 20px;
+}
 
-    .container::after {
-        left: 15px;
-    }
+.modal-content {
+    background: white;
+    margin: 40px auto;
+    padding: 20px;
+    border-radius: 20px;
+    max-width: 700px;
+    animation: fadeIn 0.5s;
+}
 
-    .right {
-        left: 0%;
-    }
+.modal img {
+    width: 100%;
+    margin: 10px 0;
+    border-radius: 15px;
+}
+
+.close {
+    text-align: right;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0; transform: scale(0.95);}
+    to {opacity: 1; transform: scale(1);}
 }
 </style>
 </head>
 
 <body>
+
+<!-- PASSWORD SCREEN -->
+<div id="passwordScreen">
+    <div class="password-box">
+        <h2>Turtle?</h2>
+        <div class="option" onclick="checkAnswer('timothy')">timothy</div>
+        <div class="option" onclick="checkAnswer('timmy')">timmy</div>
+        <div class="option" onclick="checkAnswer('geronimo')">geronimo</div>
+        <div class="option" onclick="checkAnswer('jeremy')">jeremy</div>
+        <p id="error" style="color:red;"></p>
+    </div>
+</div>
 
 <header>
     <h1>1 Month of Us</h1>
@@ -137,53 +186,105 @@ header h1 {
 
 <div class="timeline">
 
-    <div class="container left">
-        <div class="content">
-            <img src="IMG_3080.jpeg">
-            <div class="date">January 15, 2026</div>
-            <div class="title">Our Beginning</div>
-            <div class="caption">The start of something so so special 💕</div>
-        </div>
+    <div class="card" onclick="openModal('m1')">
+        <img src="IMG_3080.jpeg">
+        <div class="date">January 15, 2026</div>
+        <div class="title">Our Beginning</div>
+        <div class="caption">The start of something so so special 💕</div>
     </div>
 
-    <div class="container right">
-        <div class="content">
-            <img src="IMG_3019.jpeg">
-            <div class="date">January 20, 2026</div>
-            <div class="title">Cherry Amber Date</div>
-            <div class="caption">Our very first date! 🍒</div>
-        </div>
+    <div class="card" onclick="openModal('m2')">
+        <img src="IMG_3019.jpeg">
+        <div class="date">January 23, 2026</div>
+        <div class="title">Cherry Amber Date</div>
+        <div class="caption">Our very first date! 🍒</div>
     </div>
 
-    <div class="container left">
-        <div class="content">
-            <img src="IMG_3018.jpeg">
-            <div class="date">January 23, 2026</div>
-            <div class="title">Thai Food Date</div>
-            <div class="caption">Two dates in three days… can't get enough! 🌶️✨</div>
-        </div>
+    <div class="card" onclick="openModal('m3')">
+        <img src="IMG_3018.jpeg">
+        <div class="date">January 23, 2026</div>
+        <div class="title">Thai Food Date</div>
+        <div class="caption">Two dates in one day… we just couldn’t get enough 🌶️✨</div>
     </div>
 
-    <div class="container right">
-        <div class="content">
-            <img src="IMG_3007.jpeg">
-            <div class="date">January 31, 2026</div>
-            <div class="title">First Official Party Together!</div>
-            <div class="caption">Our first big night out as us 🥂💫</div>
-        </div>
+    <div class="card" onclick="openModal('m4')">
+        <img src="IMG_3007.jpeg">
+        <div class="date">January 31, 2026</div>
+        <div class="title">First Official Party Together!</div>
+        <div class="caption">Our first big night out as us 🥂💫</div>
     </div>
 
-    <div class="container left">
-        <div class="content">
-            <img src="IMG_3045.jpeg">
-            <div class="date">February 6, 2026</div>
-            <div class="title">Din Tai Fung (DTF?!)</div>
-            <div class="caption">First Birthday Celebration! 🎂❤️</div>
-        </div>
+    <div class="card" onclick="openModal('m5')">
+        <img src="IMG_3045.jpeg">
+        <div class="date">February 6, 2026</div>
+        <div class="title">Din Tai Fung (DTF?!)</div>
+        <div class="caption">First Birthday Celebration! 🎂❤️</div>
     </div>
 
 </div>
 
+<!-- MODALS -->
+
+<div id="m1" class="modal">
+  <div class="modal-content">
+    <div class="close" onclick="closeModal('m1')">✕</div>
+    <h2>Our Beginning</h2>
+    <p>The moment everything started.</p>
+    <img src="IMG_3080.jpeg">
+  </div>
+</div>
+
+<div id="m2" class="modal">
+  <div class="modal-content">
+    <div class="close" onclick="closeModal('m2')">✕</div>
+    <h2>Cherry Amber Date</h2>
+    <p>Our very first date!</p>
+    <img src="IMG_3019.jpeg">
+  </div>
+</div>
+
+<div id="m3" class="modal">
+  <div class="modal-content">
+    <div class="close" onclick="closeModal('m3')">✕</div>
+    <h2>Thai Food Date</h2>
+    <p>Add more photos here later ❤️</p>
+    <img src="IMG_3018.jpeg">
+  </div>
+</div>
+
+<div id="m4" class="modal">
+  <div class="modal-content">
+    <div class="close" onclick="closeModal('m4')">✕</div>
+    <h2>First Official Party Together!</h2>
+    <img src="IMG_3007.jpeg">
+  </div>
+</div>
+
+<div id="m5" class="modal">
+  <div class="modal-content">
+    <div class="close" onclick="closeModal('m5')">✕</div>
+    <h2>Din Tai Fung</h2>
+    <img src="IMG_3045.jpeg">
+  </div>
+</div>
+
+<script>
+function checkAnswer(answer) {
+    if(answer === "timmy") {
+        document.getElementById("passwordScreen").style.display = "none";
+    } else {
+        document.getElementById("error").innerText = "Wrong turtle 🐢 try again";
+    }
+}
+
+function openModal(id) {
+    document.getElementById(id).style.display = "block";
+}
+
+function closeModal(id) {
+    document.getElementById(id).style.display = "none";
+}
+</script>
+
 </body>
 </html>
-
