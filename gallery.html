@@ -30,7 +30,7 @@ header {
   border-radius: 20px;
   text-decoration: none;
   font-size: 14px;
-  z-index: 1001;
+  z-index: 2000;
 }
 
 .gallery {
@@ -52,7 +52,7 @@ header {
   transform: scale(1.05);
 }
 
-/* Lightbox */
+/* LIGHTBOX */
 .lightbox {
   display: none;
   position: fixed;
@@ -60,37 +60,59 @@ header {
   background: rgba(0,0,0,0.95);
   justify-content: center;
   align-items: center;
-  z-index: 1000;
   flex-direction: column;
+  z-index: 1500;
 }
 
 .lightbox img {
-  max-width: 90%;
-  max-height: 80%;
+  max-width: 85%;
+  max-height: 75%;
   border-radius: 20px;
 }
 
+/* ARROWS */
 .nav-btn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 40px;
+  width: 65px;
+  height: 65px;
+  background: #ff6fa5;
   color: white;
+  font-size: 34px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
   cursor: pointer;
-  padding: 20px;
-  user-select: none;
+  z-index: 2000;
+  transition: 0.3s;
 }
 
-.prev { left: 10px; }
-.next { right: 10px; }
+.nav-btn:hover {
+  background: #ff4f91;
+  transform: translateY(-50%) scale(1.1);
+}
 
-.close {
+.prev { left: 30px; }
+.next { right: 30px; }
+
+/* CLOSE BUTTON */
+.close-btn {
   position: absolute;
-  top: 20px;
-  right: 25px;
-  font-size: 30px;
+  top: 25px;
+  right: 30px;
+  font-size: 32px;
   color: white;
   cursor: pointer;
+}
+
+/* IMAGE COUNTER */
+.counter {
+  position: absolute;
+  bottom: 25px;
+  color: white;
+  font-size: 16px;
 }
 </style>
 </head>
@@ -103,8 +125,94 @@ header {
 
 <div class="gallery" id="gallery">
 
-<!-- All your images -->
 <img src="IMG_2968.JPG">
 <img src="IMG_2974.JPG">
 <img src="IMG_2975.JPG">
-<img src="IMG_2976.JP_
+<img src="IMG_2976.JPG">
+<img src="IMG_2977.JPG">
+<img src="IMG_2978.JPG">
+<img src="IMG_2979.JPG">
+<img src="IMG_2980.JPG">
+<img src="IMG_2981.JPG">
+<img src="IMG_2982.JPG">
+<img src="IMG_2993.JPG">
+<img src="IMG_3004.JPG">
+<img src="IMG_3007.JPG">
+<img src="IMG_3011.JPG">
+<img src="IMG_3018.JPG">
+<img src="IMG_3019.JPG">
+<img src="IMG_3039.JPG">
+<img src="IMG_3045.JPG">
+<img src="IMG_3050.JPG">
+<img src="IMG_3058.JPG">
+<img src="IMG_3060.JPG">
+<img src="IMG_3061.JPG">
+<img src="IMG_3062.JPG">
+<img src="IMG_3079.JPG">
+<img src="IMG_3080.JPG">
+<img src="IMG_3088.JPG">
+<img src="IMG_3089.JPG">
+<img src="IMG_3090.JPG">
+<img src="IMG_3091.JPG">
+<img src="IMG_3092.JPG">
+<img src="IMG_3093.JPG">
+<img src="IMG_3094.JPG">
+<img src="IMG_3095.JPG">
+<img src="IMG_3096.JPG">
+<img src="IMG_3097.JPG">
+<img src="IMG_3098.JPG">
+<img src="IMG_3099.JPG">
+<img src="IMG_3100.JPG">
+
+</div>
+
+<div class="lightbox" id="lightbox">
+  <div class="close-btn" id="closeBtn">&times;</div>
+  <div class="nav-btn prev" id="prevBtn">&#10094;</div>
+  <img id="lightbox-img">
+  <div class="nav-btn next" id="nextBtn">&#10095;</div>
+  <div class="counter" id="counter"></div>
+</div>
+
+<script>
+const images = document.querySelectorAll("#gallery img");
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightbox-img");
+const nextBtn = document.getElementById("nextBtn");
+const prevBtn = document.getElementById("prevBtn");
+const closeBtn = document.getElementById("closeBtn");
+const counter = document.getElementById("counter");
+
+let currentIndex = 0;
+
+function showImage(index) {
+  if (index < 0) index = images.length - 1;
+  if (index >= images.length) index = 0;
+  currentIndex = index;
+  lightboxImg.src = images[currentIndex].src;
+  counter.textContent = (currentIndex + 1) + " / " + images.length;
+}
+
+images.forEach((img, index) => {
+  img.addEventListener("click", () => {
+    lightbox.style.display = "flex";
+    showImage(index);
+  });
+});
+
+nextBtn.onclick = () => showImage(currentIndex + 1);
+prevBtn.onclick = () => showImage(currentIndex - 1);
+
+closeBtn.onclick = () => lightbox.style.display = "none";
+
+document.addEventListener("keydown", (e) => {
+  if (lightbox.style.display === "flex") {
+    if (e.key === "ArrowRight") showImage(currentIndex + 1);
+    if (e.key === "ArrowLeft") showImage(currentIndex - 1);
+    if (e.key === "Escape") lightbox.style.display = "none";
+  }
+});
+</script>
+
+</body>
+</html>
