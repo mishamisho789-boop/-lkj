@@ -1,20 +1,41 @@
-<h1 style="color:red;">THIS IS A TEST</h1>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>1 Month of Us ❤❤❤❤</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
 
 <style>
+header {
+    position: relative;
+    text-align: center;
+    padding: 50px 20px 20px;
+}
+
+.gallery-link {
+    position: absolute;
+    right: 30px;
+    top: 50px;
+    text-decoration: none;
+    background: #ffb6c1;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 1rem;
+    transition: 0.3s;
+}
+
+.gallery-link:hover {
+    background: #ff8fb1;
+    transform: scale(1.05);
+}
+
 body {
     margin: 0;
     font-family: 'Patrick Hand', cursive;
     background: #fff6f9;
     color: #5a3e4d;
-    scroll-behavior: smooth;
 }
 
 /* PASSWORD */
@@ -26,7 +47,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 9999;
+    z-index: 999;
 }
 
 .password-box {
@@ -49,29 +70,11 @@ body {
 /* HEADER */
 header {
     text-align: center;
-    padding: 60px 20px 30px;
+    padding: 50px 20px 20px;
 }
-
 header h1 {
     font-family: 'Playfair Display', serif;
     font-size: 2.8rem;
-    margin-bottom: 15px;
-}
-
-/* GALLERY BUTTON */
-.gallery-btn {
-    padding: 12px 25px;
-    border: none;
-    border-radius: 25px;
-    background: #ffb6c1;
-    color: white;
-    font-size: 1.1rem;
-    cursor: pointer;
-    transition: 0.3s;
-}
-.gallery-btn:hover {
-    background: #ff8fb1;
-    transform: scale(1.05);
 }
 
 /* TIMELINE */
@@ -82,6 +85,7 @@ header h1 {
     padding: 20px 0;
 }
 
+/* CENTER LINE */
 .timeline::after {
     content: '';
     position: absolute;
@@ -93,15 +97,23 @@ header h1 {
     margin-left: -2px;
 }
 
+/* CONTAINER */
 .container {
     padding: 20px 40px;
     position: relative;
+    background: inherit;
     width: 50%;
 }
 
-.container.left { left: 0; }
-.container.right { left: 50%; }
+.container.left {
+    left: 0;
+}
 
+.container.right {
+    left: 50%;
+}
+
+/* HEART DOT */
 .container::after {
     content: "❤";
     position: absolute;
@@ -116,16 +128,19 @@ header h1 {
     top: 30px;
 }
 
-.container.right::after { left: -13px; }
+.container.right::after {
+    left: -13px;
+}
 
+/* SCRAPBOOK CARD */
 .content {
     background: white;
     padding: 15px;
     border-radius: 15px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.1);
     transform: rotate(-2deg);
-    transition: 0.3s;
     cursor: pointer;
+    transition: 0.3s;
 }
 
 .container.right .content {
@@ -133,48 +148,20 @@ header h1 {
 }
 
 .content:hover {
-    transform: scale(1.05);
+    transform: scale(1.04);
 }
 
+/* POLAROID IMAGE */
 .content img {
     width: 100%;
-    padding: 8px 8px 30px 8px;
     background: white;
+    padding: 8px 8px 30px 8px;
     box-shadow: 0 6px 12px rgba(0,0,0,0.08);
 }
 
 .date { font-size: 0.9rem; color: #a06a82; }
 .title { font-size: 1.2rem; margin-top: 5px; }
 .caption { margin-top: 5px; }
-
-/* GALLERY */
-#gallery {
-    padding: 80px 20px;
-    text-align: center;
-}
-
-#gallery h2 {
-    font-family: 'Playfair Display', serif;
-    margin-bottom: 30px;
-}
-
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 15px;
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-.gallery-grid img {
-    width: 100%;
-    border-radius: 15px;
-    transition: 0.3s;
-}
-
-.gallery-grid img:hover {
-    transform: scale(1.05);
-}
 
 /* MOBILE */
 @media screen and (max-width: 768px) {
@@ -183,8 +170,8 @@ header h1 {
         width: 100%;
         padding-left: 70px;
         padding-right: 20px;
-        left: 0 !important;
     }
+    .container.right { left: 0%; }
     .container::after { left: 7px; }
 }
 
@@ -197,6 +184,7 @@ header h1 {
     top: 0;
     width: 100%;
     height: 100%;
+    overflow-y: auto;
     background: rgba(0,0,0,0.6);
     padding: 20px;
 }
@@ -207,6 +195,11 @@ header h1 {
     padding: 25px;
     border-radius: 20px;
     max-width: 700px;
+}
+
+.modal img {
+    width: 100%;
+    margin: 10px 0;
 }
 
 .close {
@@ -233,22 +226,22 @@ header h1 {
 
 <header>
     <h1>1 Month of Us ❤❤❤❤</h1>
-    <button class="gallery-btn" onclick="scrollToGallery()">View Our Gallery 💕</button>
+    <a href="gallery.html" class="gallery-link">Gallery 💕</a>
 </header>
 
 <div class="timeline">
 
 <div class="container left">
-<div class="content">
+<div class="content" onclick="openModal('m1')">
 <img src="IMG_3080.jpeg">
 <div class="date">January 15, 2026</div>
 <div class="title">Our Beginning</div>
-<div class="caption">The start of something so special 💕</div>
+<div class="caption">The start of something so so special 💕</div>
 </div>
 </div>
 
 <div class="container right">
-<div class="content">
+<div class="content" onclick="openModal('m2')">
 <img src="IMG_3019.jpeg">
 <div class="date">January 20, 2026</div>
 <div class="title">Cherry Amber Date</div>
@@ -256,36 +249,53 @@ header h1 {
 </div>
 </div>
 
+<div class="container left">
+<div class="content" onclick="openModal('m3')">
+<img src="IMG_3018.jpeg">
+<div class="date">January 23, 2026</div>
+<div class="title">Thai Food Date</div>
+<div class="caption">Two dates in three days with my favorite 🌶️✨</div>
+</div>
 </div>
 
-<!-- GALLERY SECTION -->
-<section id="gallery">
-    <h2>Our Favorite Moments 💗</h2>
-    <div class="gallery-grid">
-        <img src="IMG_3080.jpeg">
-        <img src="IMG_3019.jpeg">
-        <img src="IMG_3018.jpeg">
-        <img src="IMG_3007.jpeg">
-        <img src="IMG_3045.jpeg">
-    </div>
-</section>
+<div class="container right">
+<div class="content" onclick="openModal('m4')">
+<img src="IMG_3007.jpeg">
+<div class="date">January 31, 2026</div>
+<div class="title">First Official Party Together!</div>
+<div class="caption">Our first big night out as us 🥂💫</div>
+</div>
+</div>
+
+<div class="container left">
+<div class="content" onclick="openModal('m5')">
+<img src="IMG_3045.jpeg">
+<div class="date">February 6, 2026</div>
+<div class="title">Din Tai Fung (DTF?!)</div>
+<div class="caption">First Birthday Celebration! 🎂❤️</div>
+</div>
+</div>
+
+</div>
+
+<!-- MODALS (unchanged) -->
+<div id="m1" class="modal"><div class="modal-content"><div class="close" onclick="closeModal('m1')">✕</div><h2>Our Beginning</h2><img src="IMG_3080.jpeg"></div></div>
+<div id="m2" class="modal"><div class="modal-content"><div class="close" onclick="closeModal('m2')">✕</div><h2>Cherry Amber Date</h2><img src="IMG_3019.jpeg"></div></div>
+<div id="m3" class="modal"><div class="modal-content"><div class="close" onclick="closeModal('m3')">✕</div><h2>Thai Food Date</h2><img src="IMG_3018.jpeg"></div></div>
+<div id="m4" class="modal"><div class="modal-content"><div class="close" onclick="closeModal('m4')">✕</div><h2>First Official Party Together!</h2><img src="IMG_3007.jpeg"></div></div>
+<div id="m5" class="modal"><div class="modal-content"><div class="close" onclick="closeModal('m5')">✕</div><h2>Din Tai Fung</h2><img src="IMG_3045.jpeg"></div></div>
 
 <script>
 function checkAnswer(answer){
-    if(answer==="timmy"){
-        document.getElementById("passwordScreen").style.display="none";
-    } else {
-        document.getElementById("error").innerText="Wrong turtle 🐢 try again";
-    }
+if(answer==="timmy"){
+document.getElementById("passwordScreen").style.display="none";
+}else{
+document.getElementById("error").innerText="Wrong turtle 🐢 try again";
 }
-
-function scrollToGallery(){
-    document.getElementById("gallery").scrollIntoView({
-        behavior: "smooth"
-    });
 }
+function openModal(id){ document.getElementById(id).style.display="block"; }
+function closeModal(id){ document.getElementById(id).style.display="none"; }
 </script>
 
 </body>
 </html>
-
