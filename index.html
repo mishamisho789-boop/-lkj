@@ -47,10 +47,29 @@ body {
 header {
     text-align: center;
     padding: 50px 20px 20px;
+    position: relative; /* added for button positioning */
 }
 header h1 {
     font-family: 'Playfair Display', serif;
     font-size: 2.8rem;
+}
+
+/* GALLERY BUTTON (added) */
+.gallery-button {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    text-decoration: none;
+    background: #ffb6c1;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-size: 1rem;
+    transition: 0.3s;
+}
+.gallery-button:hover {
+    background: #ff8fb1;
+    transform: scale(1.05);
 }
 
 /* TIMELINE */
@@ -81,13 +100,8 @@ header h1 {
     width: 50%;
 }
 
-.container.left {
-    left: 0;
-}
-
-.container.right {
-    left: 50%;
-}
+.container.left { left: 0; }
+.container.right { left: 50%; }
 
 /* HEART DOT */
 .container::after {
@@ -103,10 +117,7 @@ header h1 {
     line-height: 26px;
     top: 30px;
 }
-
-.container.right::after {
-    left: -13px;
-}
+.container.right::after { left: -13px; }
 
 /* SCRAPBOOK CARD */
 .content {
@@ -118,14 +129,8 @@ header h1 {
     cursor: pointer;
     transition: 0.3s;
 }
-
-.container.right .content {
-    transform: rotate(2deg);
-}
-
-.content:hover {
-    transform: scale(1.04);
-}
+.container.right .content { transform: rotate(2deg); }
+.content:hover { transform: scale(1.04); }
 
 /* POLAROID IMAGE */
 .content img {
@@ -149,6 +154,11 @@ header h1 {
     }
     .container.right { left: 0%; }
     .container::after { left: 7px; }
+
+    .gallery-button {
+        top: 20px;
+        right: 20px;
+    }
 }
 
 /* MODAL */
@@ -202,6 +212,7 @@ header h1 {
 
 <header>
     <h1>1 Month of Us ❤❤❤❤</h1>
+    <a href="gallery.html" class="gallery-button">Gallery 💕</a>
 </header>
 
 <div class="timeline">
