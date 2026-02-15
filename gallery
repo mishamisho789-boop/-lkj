@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Our Gallery 💕</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(to bottom right, #ffe0ec, #ffd1f4);
+}
+
+header {
+  text-align: center;
+  padding: 30px 20px 10px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #ff4f91;
+}
+
+.back-button {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: #ff6fa5;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 12px;
+  padding: 20px;
+}
+
+.gallery img {
+  width: 100%;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
+}
+
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.9);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<a href="index.html" class="back-button">← Back</a>
+
+<header>Our Memories 💕</header>
+
+<div class="gallery">
+
+<!-- ALL YOUR IMAGES -->
+<img src="IMG_2968.JPG">
+<img src="IMG_2974.JPG">
+<img src="IMG_2975.JPG">
+<img src="IMG_2976.JPG">
+<img src="IMG_2977.JPG">
+<img src="IMG_2978.JPG">
+<img src="IMG_2979.JPG">
+<img src="IMG_2980.JPG">
+<img src="IMG_2981.JPG">
+<img src="IMG_2982.JPG">
+<img src="IMG_2993.JPG">
+<img src="IMG_3004.JPG">
+<img src="IMG_3007.JPG">
+<img src="IMG_3011.JPG">
+<img src="IMG_3018.JPG">
+<img src="IMG_3019.JPG">
+<img src="IMG_3039.JPG">
+<img src="IMG_3045.JPG">
+<img src="IMG_3050.JPG">
+<img src="IMG_3058.JPG">
+<img src="IMG_3060.JPG">
+<img src="IMG_3061.JPG">
+<img src="IMG_3062.JPG">
+<img src="IMG_3079.JPG">
+<img src="IMG_3080.JPG">
+<img src="IMG_3088.JPG">
+<img src="IMG_3089.JPG">
+<img src="IMG_3090.JPG">
+<img src="IMG_3091.JPG">
+<img src="IMG_3092.JPG">
+<img src="IMG_3093.JPG">
+<img src="IMG_3094.JPG">
+<img src="IMG_3095.JPG">
+<img src="IMG_3096.JPG">
+<img src="IMG_3097.JPG">
+<img src="IMG_3098.JPG">
+<img src="IMG_3099.JPG">
+<img src="IMG_3100.JPG">
+
+</div>
+
+<div class="lightbox" id="lightbox">
+  <img id="lightbox-img">
+</div>
+
+<script>
+const images = document.querySelectorAll(".gallery img");
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightbox-img");
+
+images.forEach(img => {
+  img.addEventListener("click", () => {
+    lightbox.style.display = "flex";
+    lightboxImg.src = img.src;
+  });
+});
+
+lightbox.addEventListener("click", () => {
+  lightbox.style.display = "none";
+});
+</script>
+
+</body>
+</html>
