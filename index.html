@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>1 Month of Us ❤❤❤❤</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
 
 <style>
@@ -24,7 +25,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 999;
+    z-index: 9999;
 }
 
 .password-box {
@@ -47,23 +48,23 @@ body {
 /* HEADER */
 header {
     text-align: center;
-    padding: 50px 20px 20px;
+    padding: 60px 20px 30px;
 }
+
 header h1 {
     font-family: 'Playfair Display', serif;
     font-size: 2.8rem;
+    margin-bottom: 15px;
 }
 
 /* GALLERY BUTTON */
 .gallery-btn {
-    margin-top: 20px;
-    padding: 10px 20px;
+    padding: 12px 25px;
     border: none;
-    border-radius: 20px;
+    border-radius: 25px;
     background: #ffb6c1;
     color: white;
-    font-family: 'Patrick Hand', cursive;
-    font-size: 1rem;
+    font-size: 1.1rem;
     cursor: pointer;
     transition: 0.3s;
 }
@@ -94,7 +95,6 @@ header h1 {
 .container {
     padding: 20px 40px;
     position: relative;
-    background: inherit;
     width: 50%;
 }
 
@@ -123,18 +123,22 @@ header h1 {
     border-radius: 15px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.1);
     transform: rotate(-2deg);
-    cursor: pointer;
     transition: 0.3s;
+    cursor: pointer;
 }
 
-.container.right .content { transform: rotate(2deg); }
+.container.right .content {
+    transform: rotate(2deg);
+}
 
-.content:hover { transform: scale(1.04); }
+.content:hover {
+    transform: scale(1.05);
+}
 
 .content img {
     width: 100%;
-    background: white;
     padding: 8px 8px 30px 8px;
+    background: white;
     box-shadow: 0 6px 12px rgba(0,0,0,0.08);
 }
 
@@ -142,7 +146,7 @@ header h1 {
 .title { font-size: 1.2rem; margin-top: 5px; }
 .caption { margin-top: 5px; }
 
-/* GALLERY SECTION */
+/* GALLERY */
 #gallery {
     padding: 80px 20px;
     text-align: center;
@@ -164,7 +168,6 @@ header h1 {
 .gallery-grid img {
     width: 100%;
     border-radius: 15px;
-    cursor: pointer;
     transition: 0.3s;
 }
 
@@ -179,8 +182,8 @@ header h1 {
         width: 100%;
         padding-left: 70px;
         padding-right: 20px;
+        left: 0 !important;
     }
-    .container.right { left: 0%; }
     .container::after { left: 7px; }
 }
 
@@ -193,7 +196,6 @@ header h1 {
     top: 0;
     width: 100%;
     height: 100%;
-    overflow-y: auto;
     background: rgba(0,0,0,0.6);
     padding: 20px;
 }
@@ -204,11 +206,6 @@ header h1 {
     padding: 25px;
     border-radius: 20px;
     max-width: 700px;
-}
-
-.modal img {
-    width: 100%;
-    margin: 10px 0;
 }
 
 .close {
@@ -241,16 +238,16 @@ header h1 {
 <div class="timeline">
 
 <div class="container left">
-<div class="content" onclick="openModal('m1')">
+<div class="content">
 <img src="IMG_3080.jpeg">
 <div class="date">January 15, 2026</div>
 <div class="title">Our Beginning</div>
-<div class="caption">The start of something so so special 💕</div>
+<div class="caption">The start of something so special 💕</div>
 </div>
 </div>
 
 <div class="container right">
-<div class="content" onclick="openModal('m2')">
+<div class="content">
 <img src="IMG_3019.jpeg">
 <div class="date">January 20, 2026</div>
 <div class="title">Cherry Amber Date</div>
@@ -260,7 +257,7 @@ header h1 {
 
 </div>
 
-<!-- GALLERY -->
+<!-- GALLERY SECTION -->
 <section id="gallery">
     <h2>Our Favorite Moments 💗</h2>
     <div class="gallery-grid">
@@ -269,26 +266,8 @@ header h1 {
         <img src="IMG_3018.jpeg">
         <img src="IMG_3007.jpeg">
         <img src="IMG_3045.jpeg">
-        <!-- Add more photos here -->
     </div>
 </section>
-
-<!-- MODALS -->
-<div id="m1" class="modal">
-<div class="modal-content">
-<div class="close" onclick="closeModal('m1')">✕</div>
-<h2>Our Beginning</h2>
-<img src="IMG_3080.jpeg">
-</div>
-</div>
-
-<div id="m2" class="modal">
-<div class="modal-content">
-<div class="close" onclick="closeModal('m2')">✕</div>
-<h2>Cherry Amber Date</h2>
-<img src="IMG_3019.jpeg">
-</div>
-</div>
 
 <script>
 function checkAnswer(answer){
@@ -297,14 +276,6 @@ function checkAnswer(answer){
     } else {
         document.getElementById("error").innerText="Wrong turtle 🐢 try again";
     }
-}
-
-function openModal(id){
-    document.getElementById(id).style.display="block";
-}
-
-function closeModal(id){
-    document.getElementById(id).style.display="none";
 }
 
 function scrollToGallery(){
